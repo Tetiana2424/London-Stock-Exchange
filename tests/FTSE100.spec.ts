@@ -10,7 +10,7 @@ test.describe("FTSE 100 Tests", () => {
   test("Top 10 gainers by % change after sorting", async ({ customPage }) => {
     const { onFTSE100Page } = customPage;
 
-    await onFTSE100Page.sortByColumn("Change %", "Highest - lowest");
+    await onFTSE100Page.sortByColumn("Change %", `Highest – lowest`);
 
     const gainers = await onFTSE100Page.getTopGainers();
 
@@ -23,7 +23,7 @@ test.describe("FTSE 100 Tests", () => {
   test("Top 10 losers by % change after sorting", async ({ customPage }) => {
     const { onFTSE100Page } = customPage;
 
-    await onFTSE100Page.sortByColumn("Change %", "Lowest - highest");
+    await onFTSE100Page.sortByColumn("Change %", `Lowest – highest`);
 
     const losers = await onFTSE100Page.getTopLosers();
 
