@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, Response } from "@playwright/test";
 import { AbstractPage } from "./Abstract.page";
 import { IFTSEConstituent } from "../Interface/IFTSE";
 import { selectors } from "../test-data/selectors";
@@ -18,7 +18,19 @@ export class FTSE100Page extends AbstractPage {
   async sortByColumn(columnText: string, sortingBy: string): Promise<void> {
     const columnHeader = this.page.locator(`th:has-text("${columnText}")`);
     await columnHeader.click();
-    await this.page.locator(`[title="${sortingBy}"]`).click();
+    await this.page
+      .locator(`.dropmenu.expanded .sort-option`)
+      .getByText(sortingBy, { exact: true })
+      .waitFor();
+    await this.page
+      .locator(`.dropmenu.expanded .sort-option`)
+      .getByText(sortingBy, { exact: true })
+      .click();
+    await this.page.waitForResponse(
+      (response: Response) =>
+        response.url().includes("/api/v1/components/refresh") &&
+        response.status() === 200
+    );
   }
 
   async getConstituents(): Promise<IFTSEConstituent[]> {
