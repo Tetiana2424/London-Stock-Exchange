@@ -7,4 +7,7 @@ export const selectors = {
   cookieBtn: 'button:has-text("Accept All Cookies")',
   searchBox: "#quick-search-input",
   searchContent: ".search-content",
+  selectFromDate: '[aria-label="Select From Date"]',
+  previousYear: '[aria-label="Previous year"]',
+  dateButton: '[role="button"]',
 };

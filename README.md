@@ -53,8 +53,9 @@ cd London-Stock-Exchange
 2. Install dependencies:
 run `npm install`
 
-3. Create a .env file in the root directory with the following environment variable:
+3. Create a .env file in the root directory with the following environment variables:
 `FTSE_100_URL=https://www.londonstockexchange.com/indices/ftse-100/constituents/table`
+`HISTIRICAL_DATA_URL=https://www.example.com/ftse100-historical`
 
 ## Running Tests
 
